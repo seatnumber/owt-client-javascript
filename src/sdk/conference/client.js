@@ -443,6 +443,18 @@ export const ConferenceClient = function(config, signalingImpl) {
   };
 
   /**
+   * @function synConference
+   * @memberOf Owt.Conference.ConferenceClient
+   * @instance
+   * @desc get a conference.
+   * @return {Promise<void, Error>} Returned promise will be resolved with undefined once the connection is disconnected.
+   */
+  this.synConference = function() {
+    return sendSignalingMessage('conferenceInfo', {});
+  };
+
+
+  /**
    * @function leave
    * @memberOf Owt.Conference.ConferenceClient
    * @instance
