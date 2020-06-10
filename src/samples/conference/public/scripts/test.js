@@ -140,7 +140,7 @@ const runSocketIOSample = function() {
         var isPublish = getParameterByName('publish');
         createToken(myRoom, 'user', 'presenter', function(response) {
             var token = response;
-            conference.join(token).then(resp => {
+            conference.join(token,{nickname : 'frank'+Date.now()}).then(resp => {
                 myId = resp.self.id;
                 myRoom = resp.id;
                 if(mediaUrl){
@@ -230,12 +230,18 @@ function text(){
 }
 
 function synCon(){
-console.log('in synCon')
-let test = conference.synConference()
-console.log('test',test)
     conference.synConference().then(function(result){
-console.log('in return',result)
+    console.log('in return',result)
 }).catch(function(err){
-  console.log('syncon err',err)
+    console.log('syncon err',err)
+})
+}
+
+function updateParticipant(){
+    console.log('updateParticipant')
+    conference.updateParticipant({nickname: 'franknickname'}).then(function(result){
+    console.log('in return',result)
+}).catch(function(err){
+    console.log('syncon err',err)
 })
 }
