@@ -124,6 +124,7 @@ export const ConferenceClient = function(config, signalingImpl) {
    * @private
    */
   function onSignalingMessage(notification, data) {
+    Logger.info('notification', notification, data);
     if (notification === 'soac' || notification === 'progress') {
       if (!channels.has(data.id)) {
         Logger.warning('Cannot find a channel for incoming data.');
@@ -156,6 +157,10 @@ export const ConferenceClient = function(config, signalingImpl) {
       fireMessageReceived(data);
     } else if (notification === 'participant') {
       fireParticipantEvent(data);
+    } else if (notification === 'drop') {
+      const newevent = new EventModule.OwtEvent('drop');
+      newevent.data = data;
+      self.dispatchEvent(newevent);
     }
   }
 
@@ -188,6 +193,15 @@ export const ConferenceClient = function(config, signalingImpl) {
       const participant = participants.get(participantId);
       participants.delete(participantId);
       participant.dispatchEvent(new EventModule.OwtEvent('left'));
+    } else if (data.action === 'update') {
+      const event = new ParticipantEvent(
+          'participantupdated', {participant: data});
+      Logger.info('event', event);
+      self.dispatchEvent(event);
+    } else if (data.action === 'forceleave') {
+      const event = new ParticipantEvent(
+        'participant', {participant: data});
+      self.dispatchEvent(event);
     }
   }
 
@@ -425,6 +439,7 @@ export const ConferenceClient = function(config, signalingImpl) {
       return Promise.reject(new ConferenceError('Invalid stream.'));
     }
     const channel = createPeerConnectionChannel();
+    Logger.info('client subscribe', stream, options);
     return channel.subscribe(stream, options);
   };
 

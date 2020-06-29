@@ -129,7 +129,22 @@ const runSocketIOSample = function() {
             console.log(event.stream.id + ' is ended.');
         });
     });
+    
+    conference.addEventListener('participantupdated', (event) => {
+        console.log('participant event:',event)
+    })
 
+    conference.addEventListener('participant', (event) => {
+        console.log('participant event:',event)
+    })
+
+    conference.addEventListener('drop', (event) => {
+        console.log('drop event:',event)
+    })
+
+    conference.addEventListener('messagereceived', (event) => {
+        console.log('participant event:',event)
+    })
 
     window.onload = function() {
         var simulcast = getParameterByName('simulcast') || false;
@@ -138,9 +153,11 @@ const runSocketIOSample = function() {
         var isHttps = (location.protocol === 'https:');
         var mediaUrl = getParameterByName('url');
         var isPublish = getParameterByName('publish');
-        createToken(myRoom, 'user', 'presenter', function(response) {
+        let deviceType = getParameterByName('deviceType') || 'web';
+        let user = getParameterByName('user') || 'user-web-' + Date.now();
+        createToken(myRoom, user, 'presenter', function(response) {
             var token = response;
-            conference.join(token,{nickname : 'frank'+Date.now()}).then(resp => {
+            conference.join(token,{nickname : 'frank'+Date.now(),deviceType : deviceType}).then(resp => {
                 myId = resp.self.id;
                 myRoom = resp.id;
                 if(mediaUrl){

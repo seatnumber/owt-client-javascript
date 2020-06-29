@@ -14,6 +14,7 @@
       // Some lines for JSDoc is longer than 80.
       "ignoreComments": true
     }],
-    "indent": ["warn"]
+    "indent": ["warn"],
+    "no-console": "off"
   }
 }

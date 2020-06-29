@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
   }
 });
 
-icsREST.API.init('_service_ID_', '_service_KEY_', 'https://localhost:3000/', false);
+icsREST.API.init('5ed0e066df7a12105296dba5', 'X19wCrv4kgzsVCd4IelzMCOYObSgt+rPyUxeavmnX3zmdhEP9mH7Q4N8dNStzoWdNZmzFLSOakxkwdjHToDpBc4IMBvNiInqMz/LD74nx5EvWWMJAd2VGIazzUpLAIz41k+wvVxkICP+1S/ZAHztZGXJP9qlQCvQv4It/8GWYio=', 'http://localhost:3000/', false);
 
 var sampleRoom;
 var pageOption = { page: 1, per_page: 100 };

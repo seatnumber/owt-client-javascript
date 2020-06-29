@@ -82,7 +82,8 @@ export class SioSignaling extends EventModule.EventDispatcher {
       this._socket.on('connect_error', (e) => {
         reject(`connect_error:${host}`);
       });
-      this._socket.on('drop', () => {
+      this._socket.on('drop', (data) => {
+        Logger.info('drop', data);
         this._reconnectTimes = reconnectionAttempts;
       });
       this._socket.on('disconnect', () => {

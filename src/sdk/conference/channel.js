@@ -599,6 +599,7 @@ export class ConferencePeerConnectionChannel extends EventDispatcher {
     if (Utils.isChrome()) {
       pcConfiguration.sdpSemantics = 'unified-plan';
     }
+    Logger.log('pcConfiguration', pcConfiguration);
     this._pc = new RTCPeerConnection(pcConfiguration);
     this._pc.onicecandidate = (event) => {
       this._onLocalIceCandidate.apply(this, [event]);
