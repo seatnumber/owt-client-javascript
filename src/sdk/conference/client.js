@@ -310,6 +310,8 @@ export const ConferenceClient = function(config, signalingImpl) {
     return signaling.send(type, message);
   }
 
+  this.sendSignalingMessage = sendSignalingMessage;
+
   // eslint-disable-next-line require-jsdoc
   function createPeerConnectionChannel() {
     // Construct an signaling sender/receiver for ConferencePeerConnection.

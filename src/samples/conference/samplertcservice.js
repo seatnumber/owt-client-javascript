@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
   }
 });
 
-icsREST.API.init('5ed0e066df7a12105296dba5', 'X19wCrv4kgzsVCd4IelzMCOYObSgt+rPyUxeavmnX3zmdhEP9mH7Q4N8dNStzoWdNZmzFLSOakxkwdjHToDpBc4IMBvNiInqMz/LD74nx5EvWWMJAd2VGIazzUpLAIz41k+wvVxkICP+1S/ZAHztZGXJP9qlQCvQv4It/8GWYio=', 'http://localhost:3000/', false);
+icsREST.API.init('5f04a30d3f1d1b1d2941ffd3', 'fMo50GuzfZ0eYLsnLVt57FaebOGr3uXY6spmpHrJ5ESSgvjxAG0TnLWBt3qJi6VdDneC5oQQvfTp7b21DNZAjRO6HXHIjxYHNBz5WdMrlzsi2lvUx+qKhLGiC/7pRFcf+B7v8BAp2abSPjKTwbATo6CGhDD2lRqM4QrrjJzkOik=', 'http://localhost:3000/', false);
 
 var sampleRoom;
 var pageOption = { page: 1, per_page: 100 };

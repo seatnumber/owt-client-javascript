@@ -45,7 +45,7 @@ const runSocketIOSample = function() {
             /\+/g, ' '));
     }
 
-    var subscribeForward = getParameterByName('forward') === 'true'?true:false;
+    var subscribeForward = true;
     var isSelf = getParameterByName('self') === 'false'?false:true;
     conference = new Owt.Conference.ConferenceClient();
     function createResolutionButtons(stream, subscribeResolutionCallback) {
@@ -147,7 +147,7 @@ const runSocketIOSample = function() {
     })
 
     window.onload = function() {
-        var simulcast = getParameterByName('simulcast') || false;
+        var simulcast = getParameterByName('simulcast') || true;
         var shareScreen = getParameterByName('screen') || false;
         myRoom = getParameterByName('room');
         var isHttps = (location.protocol === 'https:');
@@ -261,4 +261,12 @@ function updateParticipant(){
 }).catch(function(err){
     console.log('syncon err',err)
 })
+}
+
+function sendS(type, message){
+    conference.sendSignalingMessage(type, message).then(function(result){
+        console.log('in return',result)
+    }).catch(function(err){
+        console.log('syncon err',err)
+    })
 }
