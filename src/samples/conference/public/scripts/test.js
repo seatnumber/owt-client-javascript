@@ -241,26 +241,16 @@ window.onbeforeunload = function(event){
     publicationGlobal.stop();
 }
 
-function text(){
-    let msg = 'hello frank'
-    conference.send(msg)
+function text(msg){
+    sendS('text',{to:"all", message: msg})
 }
 
-function synCon(){
-    conference.synConference().then(function(result){
-    console.log('in return',result)
-}).catch(function(err){
-    console.log('syncon err',err)
-})
+function con(){
+    sendS('conferenceInfo', {})
 }
 
-function updateParticipant(){
-    console.log('updateParticipant')
-    conference.updateParticipant({nickname: 'franknickname'}).then(function(result){
-    console.log('in return',result)
-}).catch(function(err){
-    console.log('syncon err',err)
-})
+function updateP(update){
+    sendS('updateParticipant', update)
 }
 
 function sendS(type, message){
