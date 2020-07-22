@@ -155,7 +155,8 @@ const runSocketIOSample = function() {
         var isPublish = getParameterByName('publish');
         let deviceType = getParameterByName('deviceType') || 'web';
         let user = getParameterByName('user') || 'user-web-' + Date.now();
-        createToken(myRoom, user, 'presenter', function(response) {
+        let role = getParameterByName('role') || 'presenter';
+        createToken(myRoom, user, role, function(response) {
             var token = response;
             conference.join(token,{nickname : 'frank'+Date.now(),deviceType : deviceType}).then(resp => {
                 myId = resp.self.id;
