@@ -261,3 +261,12 @@ function sendS(type, message){
         console.log('syncon err',err)
     })
 }
+
+function help(){
+    console.log('sendS("text",{to:"all",message:"all"})')
+    console.log('sendS("conferenceInfo", {})')
+    console.log('sendS("updateConference", {audioMuted:true,allowUnmuteBySelf:true})')
+    console.log('sendS("updateParticipant", {nickname : "hello"})')
+    console.log('sendS("stream-control", {id:"102384176729510610",operation:"play",data:"audio"})')
+    console.log('sendS("stream-control", {id:"102384176729510610",operation:"pause",data:"audio"})')
+}
